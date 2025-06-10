@@ -11,6 +11,19 @@ int main() {
         }
     }
 
+    //Primeiro Navio.
+    for(int i = 3; i<4; i++){
+        for(int j=2; j<5; j++){
+            tabuleiro[i][j]=3;
+        }
+    }
+    //Segundo Navio.
+    for(int j = 8; j<9; j++){
+        for(int i=2; i<5; i++){
+            tabuleiro[i][j]=3;
+        }
+    }
+
     //Imprimindo o Tabuleiro
 
     printf("  "); //Cabeçalho
@@ -26,7 +39,8 @@ int main() {
         }
         printf("\n");
     }
-       
+    printf("\n");
+    printf("Navio 1 está na posição");
     // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
     // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
 
