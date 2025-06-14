@@ -1,4 +1,22 @@
 #include <stdio.h>
+int matriz[3][5]; // Estrutura da matriz Cone
+void MatrizCone (int i){
+    for(i; i<3; i++){
+        for(int j = 0; j<5; j++){
+            if (i==0 && j==2){
+                matriz[i][j] = 5;
+            } else if (i==1 && j<=3){
+                matriz[i][j] = 5;
+            } else if(i==2 && 0<=j<=4){
+                matriz[i][j] = 5;
+            }else{
+                matriz[i][j]= 0;
+            }
+        printf("%d ",matriz[i][j]);          
+        }
+    printf("\n");    
+    }
+}
 
 int main() {
     int tabuleiro[10][10]; //Estrutura da Matriz
@@ -56,7 +74,7 @@ int main() {
         printf("\n");
     }
     printf("\n");
-    
+    MatrizCone(0);
     
       // Nível Mestre - Habilidades Especiais com Matrizes
     // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
