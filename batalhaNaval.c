@@ -1,25 +1,68 @@
 #include <stdio.h>
-int matriz[3][5]; // Estrutura da matriz Cone
-void MatrizCone (int i){
+int matriz1[3][5]; // Estrutura da matriz Cone
+int matriz2[3][5]; // Estrutura da matriz Cruz
+int matriz3[3][5]; // Estrutura da matriz Octaedro
+
+void MatrizCone (int i){ //Matriz Cone
     for(i; i<3; i++){
         for(int j = 0; j<5; j++){
             if (i==0 && j==2){
-                matriz[i][j] = 5;
-            } else if (i==1 && j<=3){
-                matriz[i][j] = 5;
-            } else if(i==2 && 0<=j<=4){
-                matriz[i][j] = 5;
+                matriz1[i][j] = 5;
+            } else if (i==1 && j>0 && j<4){
+                matriz1[i][j] = 5;
+            } else if(i==2 && j<=4){
+                matriz1[i][j] = 5;
             }else{
-                matriz[i][j]= 0;
+                matriz1[i][j]= 0;
             }
-        printf("%d ",matriz[i][j]);          
-        }
-    printf("\n");    
+        printf("%d ",matriz1[i][j]);              
+        }   
+    printf("\n");     
     }
 }
 
+void MatrizCruz (int i){ //Matriz Cruz
+    for (i;i<3;i++){
+        for (int j=0; j<5;j++){
+            if (i==1){
+                matriz2[i][j]=5;
+            }else if(j==2){
+                matriz2[i][j]=5;
+            }else{
+                matriz2[i][j]=0;
+            }    
+        printf("%d ", matriz2[i][j]);
+        }   
+    printf("\n");
+    }
+}
+
+void MatrizOctaedro (int i){ //Matriz Octaedro
+    for (i;i<3;i++){
+        for(int j = 0;j<5;j++){
+            if(j==2){
+                matriz3[i][j]=5;
+            }else if(i==1 && j>0 && j<4){
+                matriz3[i][j]=5;
+            }else{
+                matriz3[i][j]=0;
+            }    
+        printf("%d ", matriz3[i][j]);
+        }
+    printf("\n");
+    }
+}
 int main() {
     int tabuleiro[10][10]; //Estrutura da Matriz
+    
+    MatrizCone(0);
+    printf("\n");
+
+    MatrizCruz(0);
+    printf("\n");
+
+    MatrizOctaedro(0);
+    printf("\n");
 
     //Inicialização da matirz com zeros.
 
@@ -58,6 +101,40 @@ int main() {
             }
         }
     }
+    // Inclusão Matriz Cone no Tabuleiro.
+    for (int i=0;i<3;i++){
+        for(int j=0;j<5;j++){
+            tabuleiro[i][j]= matriz1[i][j];
+        }
+    }
+
+    // Inclusão Matriz Cruz no Tabuleiro.
+    for (int i=0;i<3;i++){
+        for(int j=5;j<10;j++){
+            if (i==1){
+                tabuleiro[i][j]=5;
+            }else if(j==7){
+                tabuleiro[i][j]=5;
+            }else{
+                tabuleiro[i][j]=0;
+            }    
+        }
+    }
+
+    // Inclusão Matriz Octaedro no Tabuleiro.
+    for (int i=6;i<9;i++){
+        for(int j=2;j<7;j++){
+            if(j==4){
+                tabuleiro[i][j]=5;
+            }else if(i==7 && j>2 && j<6){
+                tabuleiro[i][j]=5;
+            }else{
+                tabuleiro[i][j]=0;
+            }    
+        }
+    }
+    
+    
     //Imprimindo o Tabuleiro
 
     printf("   "); //Cabeçalho
@@ -66,17 +143,14 @@ int main() {
     }
     printf("\n");
     
-    for(int i = 1; i<10; i++){
+    for(int i = 0; i<10; i++){
         printf("%2d ",1+i); // Números para linhas
         for (int j=0; j<10; j++ ){
             printf("%d ", tabuleiro[i][j]);
         }
         printf("\n");
     }
-    printf("\n");
-    MatrizCone(0);
-    
-      // Nível Mestre - Habilidades Especiais com Matrizes
+    // Nível Mestre - Habilidades Especiais com Matrizes
     // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
     // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
     // Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
